@@ -17,34 +17,49 @@ while (strlen($generated_password) < $length_password) {
 
     $random_number = rand(0, 9);
 
-    $picked_number = rand(1, 4);
+    $picked_number = rand(0, 3);
 
-    if ($picked_number === 1) {
+    if ($picked_number === 0) {
 
         $random_symbol = chr(rand(33, 47));
-    } elseif ($picked_number === 2) {
+    } elseif ($picked_number === 1) {
 
         $random_symbol = chr(rand(58, 64));
-    } elseif ($picked_number === 3) {
+    } elseif ($picked_number === 2) {
 
         $random_symbol = chr(rand(91, 96));
-    } elseif ($picked_number === 4) {
+    } elseif ($picked_number === 3) {
 
         $random_symbol = chr(rand(123, 126));
     }
 
-    if ($picked_number === 1 && $letters_checked === 'letters_checked') {
+    $array_characters = [$random_uppercase_letter, $random_lowercase_letter, $random_number, $random_symbol];
 
-        $generated_password .=  $random_uppercase_letter;
-    } elseif ($picked_number === 2 && $letters_checked === 'letters_checked') {
+    $char_to_add = $array_characters[$picked_number];
 
-        $generated_password .= $random_lowercase_letter;
-    } elseif ($picked_number === 3 && $numbers_checked === 'numbers_checked') {
+    if ($password_repetition === 'yes_repetition') {
 
-        $generated_password .= $random_number;
-    } elseif ($picked_number === 4 && $symbols_checked === 'symbols_checked') {
+        if (($picked_number === 0 && $letters_checked === 'letters_checked') ||
+            ($picked_number === 1 && $letters_checked === 'letters_checked') ||
+            ($picked_number === 2 && $numbers_checked === 'numbers_checked') ||
+            ($picked_number === 3 && $symbols_checked === 'symbols_checked')
+        ) {
 
-        $generated_password .= $random_symbol;
+            $generated_password .= $char_to_add;
+        }
+    } elseif ($password_repetition === 'no_repetition') {
+
+        if (strpos($generated_password, $char_to_add) === false) {
+
+            if (($picked_number === 0 && $letters_checked === 'letters_checked') ||
+                ($picked_number === 1 && $letters_checked === 'letters_checked') ||
+                ($picked_number === 2 && $numbers_checked === 'numbers_checked') ||
+                ($picked_number === 3 && $symbols_checked === 'symbols_checked')
+            ) {
+
+                $generated_password .= $char_to_add;
+            }
+        }
     }
 }
 
