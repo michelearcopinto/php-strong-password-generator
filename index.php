@@ -1,13 +1,12 @@
 <?php
+session_start();
+
 $length_password = $_GET['length_password'];
 $password_repetition = $_GET['password_repetition'];
 $letters_checked = $_GET['letters_checked'];
 $numbers_checked = $_GET['numbers_checked'];
 $symbols_checked = $_GET['symbols_checked'];
 $generated_password = '';
-
-
-var_dump($inserted_password, $password_repetition, $letters_checked, $numbers_checked, $symbols_checked);
 
 while (strlen($generated_password) < $length_password) {
 
@@ -63,9 +62,16 @@ while (strlen($generated_password) < $length_password) {
     }
 }
 
+if ($generated_password !== '') {
+    $_SESSION['user_password'] = $generated_password;
 
-var_dump($random_uppercase_letter, $random_lowercase_letter, $random_symbol);
-var_dump($generated_password);
+    header('Location: ./result_password.php');
+}
+
+// var_dump($_SESSION);
+// var_dump($inserted_password, $password_repetition, $letters_checked, $numbers_checked, $symbols_checked);
+// var_dump($random_uppercase_letter, $random_lowercase_letter, $random_symbol);
+// var_dump($generated_password);
 ?>
 
 <!DOCTYPE html>
@@ -80,7 +86,7 @@ var_dump($generated_password);
 
     <style>
         body {
-            /* background-color: #001632; */
+            background-color: #001632;
         }
     </style>
 </head>
@@ -88,12 +94,15 @@ var_dump($generated_password);
 <body>
     <h1 class="text-capitalize text-secondary text-center mt-5">strong password generator</h1>
     <h2 class="text-capitalize text-center text-white">Genera una password sicura</h2>
-    <div class="alert alert-primary container" role="alert">
-        Password generata
-    </div>
-    <div class="alert alert-danger container" role="alert">
+
+    <?php
+    if (($generated_password === '') || ($letters_checked === null && $numbers_checked === null && $symbols_checked === null) || ($password_repetition = null)
+    )
+        echo "
+    <div class='alert alert-danger container' role='alert'>
         Nessun parametro valido inserito
-    </div>
+    </div>"
+    ?>
 
     <div class="card container ps-5 py-5">
         <form action="index.php" method="GET" class="w-75 row d-flex">
