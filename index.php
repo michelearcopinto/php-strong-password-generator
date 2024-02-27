@@ -8,47 +8,38 @@ $numbers_checked = $_GET['numbers_checked'];
 $symbols_checked = $_GET['symbols_checked'];
 $generated_password = '';
 
-while (strlen($generated_password) < $length_password) {
+if ($password_repetition === null || ($letters_checked === null && $numbers_checked === null && $symbols_checked === null)) {
+} else {
 
-    $random_uppercase_letter = chr(rand(65, 90));
+    while (strlen($generated_password) < $length_password) {
 
-    $random_lowercase_letter = chr(rand(97, 122));
+        $random_uppercase_letter = chr(rand(65, 90));
 
-    $random_number = rand(0, 9);
+        $random_lowercase_letter = chr(rand(97, 122));
 
-    $picked_number = rand(0, 3);
+        $random_number = rand(0, 9);
 
-    if ($picked_number === 0) {
+        $picked_number = rand(0, 3);
 
-        $random_symbol = chr(rand(33, 47));
-    } elseif ($picked_number === 1) {
+        if ($picked_number === 0) {
 
-        $random_symbol = chr(rand(58, 64));
-    } elseif ($picked_number === 2) {
+            $random_symbol = chr(rand(33, 47));
+        } elseif ($picked_number === 1) {
 
-        $random_symbol = chr(rand(91, 96));
-    } elseif ($picked_number === 3) {
+            $random_symbol = chr(rand(58, 64));
+        } elseif ($picked_number === 2) {
 
-        $random_symbol = chr(rand(123, 126));
-    }
+            $random_symbol = chr(rand(91, 96));
+        } elseif ($picked_number === 3) {
 
-    $array_characters = [$random_uppercase_letter, $random_lowercase_letter, $random_number, $random_symbol];
-
-    $char_to_add = $array_characters[$picked_number];
-
-    if ($password_repetition === 'yes_repetition') {
-
-        if (($picked_number === 0 && $letters_checked === 'letters_checked') ||
-            ($picked_number === 1 && $letters_checked === 'letters_checked') ||
-            ($picked_number === 2 && $numbers_checked === 'numbers_checked') ||
-            ($picked_number === 3 && $symbols_checked === 'symbols_checked')
-        ) {
-
-            $generated_password .= $char_to_add;
+            $random_symbol = chr(rand(123, 126));
         }
-    } elseif ($password_repetition === 'no_repetition') {
 
-        if (strpos($generated_password, $char_to_add) === false) {
+        $array_characters = [$random_uppercase_letter, $random_lowercase_letter, $random_number, $random_symbol];
+
+        $char_to_add = $array_characters[$picked_number];
+
+        if ($password_repetition === 'yes_repetition') {
 
             if (($picked_number === 0 && $letters_checked === 'letters_checked') ||
                 ($picked_number === 1 && $letters_checked === 'letters_checked') ||
@@ -58,9 +49,23 @@ while (strlen($generated_password) < $length_password) {
 
                 $generated_password .= $char_to_add;
             }
+        } elseif ($password_repetition === 'no_repetition') {
+
+            if (strpos($generated_password, $char_to_add) === false) {
+
+                if (($picked_number === 0 && $letters_checked === 'letters_checked') ||
+                    ($picked_number === 1 && $letters_checked === 'letters_checked') ||
+                    ($picked_number === 2 && $numbers_checked === 'numbers_checked') ||
+                    ($picked_number === 3 && $symbols_checked === 'symbols_checked')
+                ) {
+
+                    $generated_password .= $char_to_add;
+                }
+            }
         }
     }
 }
+
 
 if ($generated_password !== '') {
     $_SESSION['user_password'] = $generated_password;
