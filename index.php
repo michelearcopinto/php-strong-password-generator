@@ -109,13 +109,10 @@ if ($generated_password !== '') {
             <div class="col-9">
                 <label for="length_password" class="form-label mb-4">Lunghezza password:</label>
                 <br>
-                <span>Password generata:</span>
-                <br>
                 <span>Consenti ripetizioni di uno o più caratteri:</span>
             </div>
             <div class="col-3">
                 <input type="number" name="length_password" class="form-control mb-3" id="length_password">
-                <input type="text" class="form-control mb-3" <?php echo "value='$generated_password'" ?> readonly>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="password_repetition" value="yes_repetition" id="yes_repetition" <?php if ($password_repetition === 'yes_repetition') echo 'checked' ?>>
                     <label class="form-check-label" for="yes_repetition">
