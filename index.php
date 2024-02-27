@@ -99,12 +99,12 @@ if ($generated_password !== '') {
     if (($generated_password === '') || ($letters_checked === null && $numbers_checked === null && $symbols_checked === null) || ($password_repetition = null)
     )
         echo "
-    <div class='alert alert-danger container' role='alert'>
+    <div class='alert alert-danger container fs-5' role='alert'>
         Nessun parametro valido inserito
     </div>"
     ?>
 
-    <div class="card container ps-5 py-5">
+    <div class="card container p-5 fs-5">
         <form action="index.php" method="GET" class="w-75 row d-flex">
             <div class="col-9">
                 <label for="length_password" class="form-label mb-4">Lunghezza password:</label>
@@ -139,14 +139,11 @@ if ($generated_password !== '') {
                 </div>
             </div>
             <div>
-                <button type="submit" class="btn btn-primary">Invia</button>
-                <button type="reset" class="btn btn-secondary">Anulla</button>
+                <button type="submit" class="btn btn-lg btn-primary px-4">Invia</button>
+                <button type="reset" class="btn btn-lg btn-secondary px-4">Anulla</button>
             </div>
         </form>
     </div>
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

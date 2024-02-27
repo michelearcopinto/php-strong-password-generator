@@ -27,15 +27,16 @@ session_start();
     <?php
     if ($_SESSION['user_password'])
         echo "
-        <div class='alert alert-success container' role='alert'>
+        <div class='alert alert-success container fs-5' role='alert'>
             Password generata!
         </div>"
     ?>
 
-    <div class="card container ps-5 py-5">
+    <div class="card container p-5 fs-5">
         <h2 class="text-center">La password generata è:</h2>
         <h1 class="text-center"><?php echo $_SESSION['user_password'] ?></h1>
     </div>
 
+</body>
 
 </html>
