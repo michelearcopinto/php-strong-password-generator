@@ -34,38 +34,37 @@
     </div>
 
     <div class="card container ps-5 py-5">
-        <form class="w-75 row">
-            <div class="mb-3 d-flex justify-content-between align-items-center">
-                <label for="exampleInputPassword1" class="form-label">Lunghezza password:</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
-            </div>
-            <div class="d-flex justify-content-between">
+        <form class="w-75 row d-flex">
+            <div class="col-9">
+                <label for="inserted_password" class="form-label mb-4">Lunghezza password:</label>
+                <br>
                 <span>Consenti ripetizioni di uno o più caratteri:</span>
-                <div class="me-4">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                            Default radio
-                        </label>
-                    </div>
-                    <div class="form-check mb-4">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                        <label class="form-check-label" for="flexRadioDefault2">
-                            Default checked radio
-                        </label>
-                    </div>
-                    <div class="mb-2 form-check">
-                        <input type="checkbox" class="form-check-input" id="letters_checked">
-                        <label class="form-check-label" for="letters_checked">Lettere</label>
-                    </div>
-                    <div class="mb-2 form-check">
-                        <input type="checkbox" class="form-check-input" id="numbers_checked">
-                        <label class="form-check-label" for="numbers_checked">Numeri</label>
-                    </div>
-                    <div class="mb-2 form-check">
-                        <input type="checkbox" class="form-check-input" id="symbols_checked">
-                        <label class="form-check-label" for="symbols_checked">Simboli</label>
-                    </div>
+            </div>
+            <div class="col-3">
+                <input type="password" class="form-control mb-3" id="inserted_password">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="yes-repetition" id="yes-repetition">
+                    <label class="form-check-label" for="yes-repetition">
+                        Sì
+                    </label>
+                </div>
+                <div class="form-check mb-4">
+                    <input class="form-check-input" type="radio" name="no-repetition" id="no-repetition">
+                    <label class="form-check-label" for="no-repetition">
+                        No
+                    </label>
+                </div>
+                <div class="mb-2 form-check">
+                    <input type="checkbox" name="letters_checked" class="form-check-input" id="letters_checked">
+                    <label class="form-check-label" for="letters_checked">Lettere</label>
+                </div>
+                <div class="mb-2 form-check">
+                    <input type="checkbox" name="numbers_checked" class="form-check-input" id="numbers_checked">
+                    <label class="form-check-label" for="numbers_checked">Numeri</label>
+                </div>
+                <div class="mb-2 form-check">
+                    <input type="checkbox" name="symbols_checked" class="form-check-input" id="symbols_checked">
+                    <label class="form-check-label" for="symbols_checked">Simboli</label>
                 </div>
             </div>
             <div>
